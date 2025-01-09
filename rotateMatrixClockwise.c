@@ -29,7 +29,7 @@ void rotateMatrixClockwise()
     int top = 0,bottom=totalRows-1,left = 0,right=totalColumns-1;
 while(top<=bottom && left<=right)
 {
-    for(int index = top;index<bottom;i++)
+    for(int index = top;index<bottom;index++)
     {
         swap(&matrix[index][left],&matrix[index+1][left]);
     }
