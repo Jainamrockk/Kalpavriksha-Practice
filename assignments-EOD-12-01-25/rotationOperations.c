@@ -99,23 +99,33 @@ void rotateMatrix(int* totalRows,int* totalColumns)
     assignMatrix(transpose,*totalRows,*totalColumns);
 
 }
-void rotateRowsRight(int totalRows,int totalColumns,int steps)
-{
-    for(int rows = 0;rows<totalRows;rows++)
-    {
-        for(int col = totalColumns-1;col>=0;col--)
-        {
-            swap(&matrix[rows][0],&matrix[rows][(col+steps)%totalColumns]);
-        }
-    }
-}
 void rotateRowsLeft(int totalRows,int totalColumns,int steps)
 {
     for(int rows = 0;rows<totalRows;rows++)
     {
+        int temp[totalColumns];
+        for(int col = totalColumns-1;col>=0;col--)
+        {
+            temp[col] = matrix[rows][(col+steps)%totalColumns];
+        }
+         for(int col = 0;col<totalColumns;col++)
+        {
+           matrix[rows][col] = temp[col];
+        }
+    }
+}
+void rotateRowsRight(int totalRows,int totalColumns,int steps)
+{
+    for(int rows = 0;rows<totalRows;rows++)
+    {
+          int temp[totalColumns];
         for(int col = 0;col<totalColumns;col++)
         {
-            swap(&matrix[rows][totalColumns-1],&matrix[rows][(totalColumns+(col-steps%totalColumns))%totalColumns]);
+           temp[col] = matrix[rows][(totalColumns+(col-steps%totalColumns))%totalColumns];
+        }
+        for(int col = 0;col<totalColumns;col++)
+        {
+           matrix[rows][col] = temp[col];
         }
     }
 }
@@ -124,9 +134,14 @@ void rotateColumnsUp(int totalRows,int totalColumns,int steps)
 {
     for(int col=0;col<totalColumns;col++)
     {
+        int temp[totalRows];
         for(int row=totalRows-1;row>=0;row--)
         {
-            swap(&matrix[totalRows-1][col],&matrix[(row+steps)%totalRows][col]);
+           temp[row] = matrix[(row+steps)%totalRows][col];
+        }
+         for(int row = 0;row<totalRows;row++)
+        {
+           matrix[row][col] = temp[row];
         }
     }
 }
@@ -135,9 +150,14 @@ void rotateColumnsDown(int totalRows,int totalColumns,int steps)
 {
     for(int col=0;col<totalColumns;col++)
     {
+        int temp[totalRows];
         for(int row=0;row<totalRows;row++)
         {
-            swap(&matrix[0][col],&matrix[(totalRows+(row-steps%totalRows))%totalRows][col]);
+            temp[row] = matrix[(totalRows+(row-steps%totalRows))%totalRows][col];
+        }
+           for(int row = 0;row<totalRows;row++)
+        {
+           matrix[row][col] = temp[row];
         }
     }
 }
