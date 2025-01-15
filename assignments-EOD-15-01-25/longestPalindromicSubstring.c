@@ -32,19 +32,21 @@ char* ptr = odd;
         ptr++;
         left++;
     }
+    *ptr = '\0';
 }
 int main()
 {
     string = (char*)malloc(100*sizeof(char));
+    printf("Enter String: ");
     scanf("%[^\n]",string);
     getchar();
     int len = stringLength(string);
     maxLen = 0;
-        char* ans = (char*)malloc(len*sizeof(char));
+    char* ans = (char*)malloc((len+1)*sizeof(char));
     for(int index = 0;index<len;index++)
     {
-        char* odd = (char*)malloc(len*sizeof(char));
-        char* even = (char*)malloc(len*sizeof(char));
+        char* odd = (char*)malloc((len+1)*sizeof(char));
+        char* even = (char*)malloc((len+1)*sizeof(char));
         longestPalindrome(odd,index,index,len);
         longestPalindrome(even,index,index+1,len);
         if(stringLength(odd)>maxLen)
@@ -59,6 +61,7 @@ int main()
         }
 
     }
+    printf("Longest Palindromic Substring: ");
     printf("%s",ans);
     
     return 0;
