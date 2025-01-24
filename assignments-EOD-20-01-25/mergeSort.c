@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct ListNode
+typedef struct listNode
 {
 
     int data;
-    struct ListNode *next;
-} ListNode;
+    struct listNode *next;
+} listNode;
 
-ListNode *createList()
+listNode *createList()
 {
-    ListNode *head = NULL;
-    ListNode *tail = NULL;
+    listNode *head = NULL;
+    listNode *tail = NULL;
     while (1)
     {
         int value;
@@ -19,14 +19,14 @@ ListNode *createList()
 
         if (head == NULL)
         {
-            head = (ListNode *)malloc(sizeof(ListNode *));
+            head = (listNode *)malloc(sizeof(listNode *));
             head->data = value;
             head->next = NULL;
             tail = head;
         }
         else
         {
-            ListNode *node = (ListNode *)malloc(sizeof(ListNode *));
+            listNode *node = (listNode *)malloc(sizeof(listNode *));
             node->data = value;
             tail->next = node;
             tail = tail->next;
@@ -40,7 +40,7 @@ ListNode *createList()
     return head;
 }
 
-void printLinkedList(ListNode *head)
+void printLinkedList(listNode *head)
 {
     if (head == NULL)
     {
@@ -58,7 +58,7 @@ void swap(int *a,int *b)
     *a = *b;
     *b = temp;
 }
-ListNode *merge(ListNode *left,ListNode* right)
+listNode *merge(listNode *left,listNode* right)
 {
 
     if(left == NULL) return right;
@@ -73,27 +73,27 @@ ListNode *merge(ListNode *left,ListNode* right)
     return right;
 }
 
-ListNode *calcMid(ListNode *head)
+listNode *calcMid(listNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
-    ListNode *slow = head;
-    ListNode *fast = head->next;
+    listNode *slow = head;
+    listNode *fast = head->next;
     while (fast!=NULL && fast->next != NULL)
     {
         slow = slow->next;
         fast = fast->next->next;
     }
-    ListNode* temp = slow->next;
+    listNode* temp = slow->next;
     slow->next = NULL;
     return temp;
 }
 
-ListNode *mergeSort(ListNode *left)
+listNode *mergeSort(listNode *left)
 {
     if (left == NULL || left->next == NULL)
         return left;
-    ListNode* mid = calcMid(left);   
+    listNode* mid = calcMid(left);   
     left = mergeSort(left);
     mid = mergeSort(mid);
     left = merge(left,mid);
@@ -103,7 +103,7 @@ ListNode *mergeSort(ListNode *left)
 int main()
 {
     printf("Enter the linked list: ");
-    ListNode *head = createList();
+    listNode *head = createList();
     head = mergeSort(head);
     printf("Sorted Linked List is: ");
     printLinkedList(head);

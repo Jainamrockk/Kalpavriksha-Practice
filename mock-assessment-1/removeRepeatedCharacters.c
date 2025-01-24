@@ -34,4 +34,4 @@ int main()
     removeDuplicates();
     printf("%s",string);
     return 0;
-}
+}       

@@ -2,12 +2,12 @@
 #include<stdlib.h>
 
 
-typedef struct ListNode{
+typedef struct listNode{
     int data;
-    struct ListNode* next;
-}ListNode;
+    struct listNode* next;
+}listNode;
 
-int listLength(struct ListNode* head)
+int listLength(struct listNode* head)
 {
     int length = 0;
     while(head)
@@ -19,11 +19,11 @@ int listLength(struct ListNode* head)
 }
 
 
-struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+struct listNode* removeNthFromEnd(struct listNode* head, int n) {
     int pos = listLength(head) - n;
     if(pos<0 || head == NULL)
     return head;
-    struct ListNode* node = head;
+    struct listNode* node = head;
     if(pos == 0)
     {
         head = head->next;
@@ -43,10 +43,10 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
 }
 
 
-ListNode* createList()
+listNode* createList()
 {
-    ListNode* head = NULL;
-    ListNode* tail = NULL;
+    listNode* head = NULL;
+    listNode* tail = NULL;
     while(1)
     {
         int value;
@@ -54,14 +54,14 @@ ListNode* createList()
 
         if(head == NULL)
         {
-            head = (ListNode*)malloc(sizeof(ListNode*));
+            head = (listNode*)malloc(sizeof(listNode*));
             head->data = value;
             head->next = NULL;
             tail = head;
         }
         else
         {
-            ListNode* node = (ListNode*)malloc(sizeof(ListNode*));
+            listNode* node = (listNode*)malloc(sizeof(listNode*));
             node->data = value;
             tail->next = node;
             tail = tail->next;
@@ -75,7 +75,7 @@ ListNode* createList()
     return head;
 }
 
-void printLinkedList(ListNode* head)
+void printLinkedList(listNode* head)
 {
     
     while(head)
@@ -90,7 +90,7 @@ void printLinkedList(ListNode* head)
 int main()
 {
     printf("Enter the linked list: ");
-    ListNode* head = createList();
+    listNode* head = createList();
     int n;
     printf("Enter the position from back to remove: ");
     scanf("%d",&n);
