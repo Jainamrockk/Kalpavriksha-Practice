@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct ListNode{
+typedef struct listNode{
     int data;
-    struct ListNode* next;
-}ListNode;
+    struct listNode* next;
+}listNode;
 
 
 // Complete the mergeLists function below.
@@ -20,16 +20,16 @@ typedef struct ListNode{
  *
  */
 
-    ListNode* head1;
-    ListNode* head2;
-    ListNode* tail1;
-    ListNode* tail2;
+    listNode* head1;
+    listNode* head2;
+    listNode* tail1;
+    listNode* tail2;
  
- ListNode* mergeSorted(ListNode* head1, ListNode* head2)
+ listNode* mergeSorted(listNode* head1, listNode* head2)
  {
     
-    ListNode* ptr = head1;
-    ListNode* curr = head1;
+    listNode* ptr = head1;
+    listNode* curr = head1;
     head1 = head1->next;
     while(head1!=NULL && head2!=NULL)
     {
@@ -59,7 +59,7 @@ typedef struct ListNode{
     return curr;
  }
  
-ListNode* mergeLists(ListNode* head1, ListNode* head2) {
+listNode* mergeLists(listNode* head1, listNode* head2) {
 
     if(head1 == NULL)
     return head2;
@@ -74,10 +74,10 @@ ListNode* mergeLists(ListNode* head1, ListNode* head2) {
 
 }
 
-ListNode* createList()
+listNode* createList()
 {
-    ListNode* head = NULL;
-    ListNode* tail = NULL;
+    listNode* head = NULL;
+    listNode* tail = NULL;
     while(1)
     {
         int value;
@@ -85,14 +85,14 @@ ListNode* createList()
 
         if(head == NULL)
         {
-            head = (ListNode*)malloc(sizeof(ListNode*));
+            head = (listNode*)malloc(sizeof(listNode*));
             head->data = value;
             head->next = NULL;
             tail = head;
         }
         else
         {
-            ListNode* node = (ListNode*)malloc(sizeof(ListNode*));
+            listNode* node = (listNode*)malloc(sizeof(listNode*));
             node->data = value;
             tail->next = node;
             tail = tail->next;
@@ -106,7 +106,7 @@ ListNode* createList()
     return head;
 }
 
-void printLinkedList(ListNode* head)
+void printLinkedList(listNode* head)
 {
     while(head!=NULL)
     {
@@ -117,10 +117,10 @@ void printLinkedList(ListNode* head)
 int main()
 {
    printf("Enter the linked list 1: ");
-   ListNode* head1 = createList();
+   listNode* head1 = createList();
    
    printf("\nEnter the linked list 2: ");
-   ListNode* head2 = createList();
+   listNode* head2 = createList();
 
    printf("\nMerged Linked List:");
    head1 = mergeLists(head1,head2);
