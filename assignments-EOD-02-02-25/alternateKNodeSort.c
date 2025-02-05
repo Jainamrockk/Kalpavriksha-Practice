@@ -34,11 +34,13 @@ listNode *createList()
             tail = head;
             continue;
         }
+        else{
         listNode *node = (listNode *)malloc(sizeof(listNode));
         node->val = value;
         node->next = NULL;
         tail->next = node;
         tail = node;
+        }
         char ch = getchar();
         if (ch == '\n' || ch == EOF)
             break;

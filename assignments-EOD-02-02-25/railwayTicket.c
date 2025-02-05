@@ -122,9 +122,6 @@ void enqueue(passengerList* passengerMemo)
     char* passengerType = (char*)malloc(sizeof(char)*15);
 
     scanf(",%d, %[^,], \"%[^\"]\";", &pId, passengerType, name);
-    // scanf(",%d,",&pId);
-    // scanf("%s,",passengerType);
-    // scanf("\"%[^\"]\";",name);
     if(passengerMemo->front == -1)
     {
         passengerMemo->front = 0;
